@@ -1,0 +1,93 @@
+$background: #af925b;
+$field: white;
+$border: #806565;
+
+.box_wrp {
+  display: inline-block;
+  text-align: center;
+
+  h1 {
+    width: 100vw;
+    display: inline-block;
+    font-family:  'Roboto', sans-serif;
+  }
+
+  .gameboard {
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    justify-content: center;
+    background-color: $background;
+    width: 700px;
+    height: 700px;
+
+    .gameboard_wrp {
+      padding: 34px;
+      display: inline-block;
+
+      .row {
+        background-color: $border;
+        text-align: left;
+        display: inline-flex;
+        -webkit-display: inline-flex;
+
+        .box {
+          background-color: black;
+          margin: 2px;
+          display: inline-block;
+          width: 200px;
+          height: 200px;
+        }
+
+        .box_dummy {
+          background-color: white;
+          margin: 2px;
+          display: inline-block;
+          width: 200px;
+          height: 200px;
+        }
+
+        .box_dummy_alt {
+          background-color: red;
+          margin: 2px;
+          display: inline-block;
+          width: 200px;
+          height: 200px;
+        }
+
+        p {
+          font-size: 100px;
+          text-align: center;
+          color: antiquewhite;
+          width: 200px;
+          height: 200px;
+          padding: 38px 0;
+          margin: 0;
+        }
+
+      }
+    }
+  }
+
+  .player_row {
+    width: 100vw;
+    text-align: center;
+    display: inline-flex;
+    display: -webkit-inline-flex;
+
+    .player_row_wrp {
+      width: 50vw;
+      display: inline-block;
+
+       h2 {
+         text-align: center;
+       }
+
+       .human_dummy {
+         background-color: $background;
+
+       }
+
+       .opponent_dummy { background-color: $background}
+    }
+  }
+}
