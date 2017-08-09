@@ -24,14 +24,12 @@ var counterSp2 = 0;
 var coordinates = ["A1","A2","A3","B1","B2","B3","C1","C2","C3"]
 
 
-//switch
-var turn = 0;
 
 
 //anzeigen
 
 
-function zugAnzeige() {
+function zugAnzeige(turn) {
   console.log("im zug");
   if (turn == 0) {
     var human = document.getElementsByClassName('human')
@@ -80,6 +78,7 @@ start.addEventListener("click", function() {
   var _self = this;
   var spielerZug1 = true;
 
+
   hauptfunktion();
 
   if (hauptfunktion(spielerZug1) == false) {
@@ -87,27 +86,34 @@ start.addEventListener("click", function() {
     turn++
   }
 
-  function hauptfunktion(spielerZug1) {
+  function hauptfunktion() {
     console.log(spielerZug1 + "zwischenscope");
 
     separate.forEach(function(field, i) {
       spielerAktion(this)
 
-      function spielerAktion(spielerZug1) {
-        field.addEventListener("click", function(spielerZug1) {
+      function spielerAktion() {
+        field.addEventListener("click", function() {
+          var trigger = false;
+          console.log(typeof(test2()));
 
+          if (trigger == true) {console.log("hello world");}
+          console.log(trigger);
           var box = separate[i].className;
           console.log(spielerZug1 + "innerscope");
           //erstelle array, feuere funktionen (punkte,)
-          if (box == "box") {
-            var selection = coordinates[i];
-            spielerArray.push(selection);
-            console.log(spielerArray);
-            field.className = "box_dummy";
-            // punkte()
-            // return function () {spielerZug1 = true}
-            return spielerZug1 = false;
+          function test2() {
+            if (box == "box") {
+              var selection = coordinates[i];
+              spielerArray.push(selection);
+              console.log(spielerArray);
+              field.className = "box_dummy";
+              // punkte()
+              return function() {trigger = true}
+
+            }
           }
+          test2()
 
           if (box = "box_dummy") {
             console.log("feld voll");
