@@ -25,7 +25,7 @@ var coordinates = ["A1","A2","A3","B1","B2","B3","C1","C2","C3"]
 
 
 
-
+var turn = 0;
 //anzeigen
 
 
@@ -86,37 +86,35 @@ start.addEventListener("click", function() {
     turn++
   }
 
+  console.log(field);
+
+
+
   function hauptfunktion() {
     console.log(spielerZug1 + "zwischenscope");
 
-    separate.forEach(function(field, i) {
-      spielerAktion(this)
-
+    var tester = separate.forEach(function(field, i) {
+      spielerAktion()
+      console.log(spielerAktion());
       function spielerAktion() {
         field.addEventListener("click", function() {
-          var trigger = false;
-          console.log(typeof(test2()));
-
-          if (trigger == true) {console.log("hello world");}
-          console.log(trigger);
+          // console.log(typeof(test2()));
+          // console.log(trigger);
           var box = separate[i].className;
-          console.log(spielerZug1 + "innerscope");
+          // console.log(spielerZug1 + "innerscope");
           //erstelle array, feuere funktionen (punkte,)
-          function test2() {
-            if (box == "box") {
-              var selection = coordinates[i];
-              spielerArray.push(selection);
-              console.log(spielerArray);
-              field.className = "box_dummy";
-              // punkte()
-              return function() {trigger = true}
+          if (box == "box") {
+            var selection = coordinates[i];
+            spielerArray.push(selection);
+            console.log(spielerArray);
+            field.className = "box_dummy" + " " + "spieler2" ;
+            // punkte()
 
-            }
           }
-          test2()
 
           if (box = "box_dummy") {
             console.log("feld voll");
+            return
           }
         })
       }
@@ -125,10 +123,16 @@ start.addEventListener("click", function() {
 });
 
 
-console.log(turn);
-if (turn == 1) {
-  console.log("spieler 2");
+
+function classTest() {
+  if (field.className == "box_dummy" + " " + "spieler2") {
+    console.log("hollow world");
+  }
 }
+
+classTest()
+
+
 
 
 

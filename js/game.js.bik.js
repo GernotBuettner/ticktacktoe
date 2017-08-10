@@ -24,14 +24,12 @@ var counterSp2 = 0;
 var coordinates = ["A1","A2","A3","B1","B2","B3","C1","C2","C3"]
 
 
-//switch
+
 var turn = 0;
-
-
 //anzeigen
 
 
-function zugAnzeige() {
+function zugAnzeige(turn) {
   console.log("im zug");
   if (turn == 0) {
     var human = document.getElementsByClassName('human')
@@ -74,55 +72,26 @@ function naechster (turn, ready) {
 //starte spiel
 zugAnzeige();
 
+var startPunkt = false;
 //hauptfunktion
-start.addEventListener("click", function() {
-  window.alert("start game")
-  var _self = this;
-  var spielerZug1 = true;
-
-  hauptfunktion();
-
-  if (hauptfunktion(spielerZug1) == false) {
-    console.log("hello");
-    turn++
-  }
-
-  function hauptfunktion(spielerZug1) {
-    console.log(spielerZug1 + "zwischenscope");
-
-    separate.forEach(function(field, i) {
-      spielerAktion(this)
-
-      function spielerAktion(spielerZug1) {
-        field.addEventListener("click", function(spielerZug1) {
-
-          var box = separate[i].className;
-          console.log(spielerZug1 + "innerscope");
-          //erstelle array, feuere funktionen (punkte,)
-          if (box == "box") {
-            var selection = coordinates[i];
-            spielerArray.push(selection);
-            console.log(spielerArray);
-            field.className = "box_dummy";
-            // punkte()
-            // return function () {spielerZug1 = true}
-            return spielerZug1 = false;
-          }
-
-          if (box = "box_dummy") {
-            console.log("feld voll");
-          }
-        })
-      }
-    })
-  }
-});
-
-
-console.log(turn);
-if (turn == 1) {
-  console.log("spieler 2");
+function spielStart() {
+  start.addEventListener("click", function() {
+    window.alert("start game")
+    var starter = function() {
+      startPunkt = true;
+    }
+    return starter;
+  });
+  return starter
 }
+spielStart()
+console.log(spielStart());
+
+if (startPunkt == true) {
+  console.log("hello world");
+}
+
+
 
 
 
