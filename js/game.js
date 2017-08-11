@@ -1,141 +1,94 @@
-//spieler definieren
-
-var spieler = ["Spieler 1", "Spieler 2"]
-
 
 //spieler array dummy
-var spielerArray = [];
+var spielerArray = new Array (2);
+
+for (var i = 0; i < spielerArray.length; i++) {
+  spielerArray[i] = new Array (2)
+  spielerArray [0] [0] =[]
+  spielerArray [0] [1] =[]
+}
 
 var punkteSp1 = document.querySelector('.punkte_Sp1');
 console.log(punkteSp1);
-punkteSp1.innerHTML = counterSp1;
-
-console.log(typeof(counterSp1));
-
-
-
-
 var counterSp1 = 0;
 var counterSp2 = 0;
-
-
-
 //koordinaten definition
 var coordinates = ["A1","A2","A3","B1","B2","B3","C1","C2","C3"]
-
-
-
-var turn = 0;
-//anzeigen
-
-
-function zugAnzeige(turn) {
-  console.log("im zug");
-  if (turn == 0) {
-    var human = document.getElementsByClassName('human')
-    for (var i = 0; i < human.length; i++) {
-      human[i].className = "human_dummy"
-      console.log(human[i]+"anzeige");
-    }
-  }
-}
 
 //felderauswahl
 var field = document.querySelectorAll('.box');
 var fieldInside = document.querySelector(".inside")
-
 var separate = Array.prototype.slice.call(field, 0);
-
 //start button
 var start = document.getElementsByClassName('btn')[0];
 
 
-function spielEnde () {}
-
-// function className (className) {
-//   var box = document.getElementsByClassName('box');
-//   for (var i = 0; i < box.length; i++) {
-//     var className = box[i].className
-//   }
-//   return className;
-// }
+function className () {
+  var box = document.getElementsByClassName('box');
+  for (var i = 0; i < box.length; i++) {
+    var className = box[i].className
+  }
+  return className;
+}
 
 
 // console.log(className());
 
-function naechster (turn, ready) {
-    return turn =+ 1;
-    return ready = true;
+// function nextTurn () {
+//     turn = 1 - turn;
+// }
+
+function getPoints(i,turn) {
+  var box = separate[i].className;
+  if (box == "box") {
+    var selection = coordinates[i];
+    console.log(turn);
+    function playerSelection() {
+      console.log("spieler " + turn);
+      console.log(typeof(turn));
+      console.log(spielerArray [0][turn]);
+      spielerArray [0] [turn].push(selection)
+      console.log(spielerArray [0] [0] + "array 0");
+      console.log(spielerArray [0] [1] + "array 1");
+
+
+    }
+    playerSelection(turn,spielerArray [0] [0], spielerArray [0] [1]);
+    turn = 1 - turn;
+    console.log(turn + " points set");
+    field[i].className = "box_dummy";
+    // punkte()
+    return turn;
+
+    }
+
+  if (box == "box_dummy") {
+    console.log("feld voll");
+    return
+  }
 }
 
-
-//starte spiel
-zugAnzeige();
-
-//hauptfunktion
-start.addEventListener("click", function() {
-  window.alert("start game")
-  var _self = this;
-  var spielerZug1 = true;
+function setup() {
+  var turn = 0;
+  var beginn = false;
+  start.addEventListener("click", function() {
+    alert("Spielstart")
+  })
 
 
-  hauptfunktion();
+  className();
+  console.log(className());
+  separate.forEach(function(field, i) {
+    field.addEventListener("click", function() {
+      getPoints(i, turn)
 
-  if (hauptfunktion(spielerZug1) == false) {
-    console.log("hello");
-    turn++
-  }
-
-  console.log(field);
-
-
-
-  function hauptfunktion() {
-    console.log(spielerZug1 + "zwischenscope");
-
-    var tester = separate.forEach(function(field, i) {
-      spielerAktion()
-      console.log(spielerAktion());
-      function spielerAktion() {
-        field.addEventListener("click", function() {
-          // console.log(typeof(test2()));
-          // console.log(trigger);
-          var box = separate[i].className;
-          // console.log(spielerZug1 + "innerscope");
-          //erstelle array, feuere funktionen (punkte,)
-          if (box == "box") {
-            var selection = coordinates[i];
-            spielerArray.push(selection);
-            console.log(spielerArray);
-            field.className = "box_dummy" + " " + "spieler2" ;
-            // punkte()
-
-          }
-
-          if (box = "box_dummy") {
-            console.log("feld voll");
-            return
-          }
-        })
-      }
+      console.log(turn + " outer");
     })
-  }
-});
-
-
-
-function classTest() {
-  if (field.className == "box_dummy" + " " + "spieler2") {
-    console.log("hollow world");
-  }
+  })
+  console.log(turn);
 }
 
-classTest()
-
-
-
-
-
+setup();
 
 
 
@@ -178,7 +131,7 @@ function punkte() {
   console.log("punkte");
 
   console.log(zuweisung());
-  function zuweisung(counterSp1, counterSp2) {
+  function zuweisung() {
     console.log(wertung + "wertung");
     if (turn == 0 && wertung == true) {
       console.log("gewerted");
