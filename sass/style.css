@@ -27,7 +27,7 @@
           width: 200px;
           height: 200px; }
         .box_wrp .gameboard .gameboard_wrp .row .box_dummy {
-          background-color: white;
+          background-color: black;
           margin: 2px;
           display: inline-block;
           width: 200px;
