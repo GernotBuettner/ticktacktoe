@@ -23,6 +23,10 @@ var coordinates = ["A1","A2","A3","B1","B2","B3","C1","C2","C3"]
 
 //felderauswahl
 var field = document.querySelectorAll('.box');
+for (var i = 0; i < field.length; i++) {
+  console.log(field[i]);
+}
+
 var markPosition = document.getElementsByClassName('inside')[0];
 var separate = Array.prototype.slice.call(field, 0);
 //start button
@@ -34,6 +38,12 @@ PointFieldA.innerHTML = 0;
 
 var PointFieldB = document.getElementsByClassName('punkte_Sp2')[0]
 PointFieldB.innerHTML = pointCounterB;
+
+
+var inputPlayer2 = document.querySelector('.player_input');
+
+var inputComputer = document.querySelector('.computer_input');
+
 
 
 function classNaming () {
@@ -58,6 +68,7 @@ function getPoints(box,i,turn) {
     }
 
     playerSelection(turn,spielerArray [0] [0], spielerArray [0] [1]);
+    markFields(turn,i,playerMarkA)
     field[i].className = "box_dummy";
 
     }
@@ -81,36 +92,50 @@ function markFields(turn,i) {
 }
 
 
-function goal() {
-  if (pointCounterA == 2) {
+function goal(pointCounterA,pointCounterB) {
+  for (var i = 0; i < field.length; i++) {
+    console.log(field[i].className);
+    var test = field[i].className
+    if (field[i].className == field.className) {
+      alert("foo")
+    }
+
+
+  }
+
+  if (pointCounterA > 1) {
     alert("Player 1 Win!")
   }
 
-  if (PointFieldB == 2) {
+  if (PointFieldB > 1) {
     alert("Player 2 Win!")
   }
-
-
 }
+
+computer
+
+function computer(turn) {
+  if (turn == 1 && inputComputer.checked == true) {
+    alert("buhuhu")
+  }
+}
+
+computer()
 
 //setup
 function setup() {
-  var turn = 0;
-  var beginn = false;
-  start.addEventListener("click", function() {
-    alert("Spielstart")
-  })
 
+  var turn = 0;
 
   classNaming();
-  console.log(classNaming());
+  computer(turn)
   separate.forEach(function(field, i) {
     field.addEventListener("click", function() {
       var box = separate[i].className;
       console.log(i);
-      getPoints(box,i, turn);
-      markFields(turn,i,playerMarkA)
+      getPoints(box,i, turn, playerMarkA, playerMarkB);
       points(turn,box);
+      goal(pointCounterA,pointCounterB);
       if (box == "box") {
         turn = 1 - turn;
       }
@@ -120,17 +145,22 @@ function setup() {
   console.log(turn);
 }
 
-setup();
-
-goal();
 
 
+start.addEventListener("click", function() {
+  alert("Spielstart")
+  setup();
+})
 
 
 
 
 
-//definiere punktesystem
+
+
+
+
+//define pointsystem
 var horizontal = new Array (3)
 
 for (var i = 0; i < 3; i++) {
@@ -139,9 +169,6 @@ for (var i = 0; i < 3; i++) {
   horizontal [0] [1] = ["B1", "B2", "B3"];
   horizontal [0] [2] = ["C1", "C2", "C3"];
 }
-// console.log(horizontal[0][0]);
-// console.log(typeof(horizontal [0] [0]));
-// console.log(spielerArray);
 
 
 var vertikal = new Array (3)
@@ -159,13 +186,13 @@ var diagonal = new Array (2)
 for (var i = 0; i < 2; i++) {
   diagonal[i] = new Array (2);
   diagonal [0] [0] = ["A1", "B2", "C3"]
-  diagonal [0] [0] = ["C1", "B2", "A3"]
+  diagonal [0] [1] = ["C1", "B2", "A3"]
 }
 
-function pointCount() {
+function pointCount(turn) {
   console.log("inside");
-  if (turn == 0 && box == "box") {
-    alert("you made a point")
+  if (turn == 0) {
+    alert("Player 1. You made a point")
     pointCounterA += 1;
     PointFieldA.innerHTML = pointCounterA
 
@@ -173,8 +200,8 @@ function pointCount() {
 
   }
 
-  if (turn == 1 && box == "box") {
-    alert("you made a point")
+  if (turn == 1) {
+    alert("Player 2. You made a point")
     pointCounterB += 1;
     PointFieldB.innerHTML = pointCounterB
   }
@@ -184,8 +211,7 @@ function pointCount() {
 function points(turn, box) {
 
   //horizontal
-  //credit Sudhakar R StackOverflow
-  if ($(spielerArray [0] [turn]).not(horizontal [0] [0]).length === 0 && $(horizontal [0] [0]).not(spielerArray [0] [turn]).length === 0) {
+  if ($(spielerArray [0] [turn]).not(horizontal [0] [0]).length == 0 && $(horizontal [0] [0]).not(spielerArray [0] [turn]).length === 0) {
       console.log("point!");
       pointCount(turn,pointCounterA,pointCounterB);
 
@@ -227,13 +253,13 @@ function points(turn, box) {
   }
 
   //diagonal
-  if ($(spielerArray [0] [turn]).not(diagonal [0] [1]).length === 0 && $(diagonal [0] [1]).not(spielerArray [0] [turn]).length === 0) {
+  if ($(spielerArray [0] [turn]).not(diagonal [0] [0]).length === 0 && $(diagonal [0] [0]).not(spielerArray [0] [turn]).length === 0) {
     console.log("point!");
     pointCount(turn,pointCounterA,pointCounterB);
 
   }
 
-  if ($(spielerArray [0] [turn]).not(diagonal [0] [2]).length === 0 && $(diagonal [0] [2]).not(spielerArray [0] [turn]).length === 0) {
+  if ($(spielerArray [0] [turn]).not(diagonal [0] [1]).length === 0 && $(diagonal [0] [1]).not(spielerArray [0] [turn]).length === 0) {
     console.log("point!");
     pointCount(turn,pointCounterA,pointCounterB);
 

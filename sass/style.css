@@ -60,5 +60,7 @@
         background-color: #af925b; }
       .box_wrp .player_row .player_row_wrp .opponent_dummy {
         background-color: #af925b; }
+  .box_wrp .btn_wrp p {
+    font-size: 20px; }
 
 /*# sourceMappingURL=style.css.map */

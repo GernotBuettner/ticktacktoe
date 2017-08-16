@@ -30,6 +30,7 @@ $border: #806565;
         display: inline-flex;
         -webkit-display: inline-flex;
 
+
         .box {
           background-color: black;
           margin: 2px;
@@ -88,6 +89,15 @@ $border: #806565;
        }
 
        .opponent_dummy { background-color: $background}
+    }
+  }
+
+  .btn_wrp {
+    
+
+    p {
+
+      font-size: 20px;
     }
   }
 }
