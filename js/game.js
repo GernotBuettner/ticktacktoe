@@ -3,7 +3,6 @@
 var spielerArray = [[],[]]
 
 
-
 //player points
 var pointCounterA = 0;
 var pointCounterB = 0;
@@ -53,15 +52,9 @@ function classNaming () {
 function getPoints(box,i,turn) {
 
   if (box == "box") {
-
     var selection = coordinates[i];
-
     function playerSelection() {
-
-
       spielerArray [turn].push(selection)
-      console.log(spielerArray [0] + "  Spieler 1");
-      console.log(spielerArray [1] + "  Spieler 2");
     }
 
     playerSelection();
@@ -69,9 +62,7 @@ function getPoints(box,i,turn) {
     field[i].className = "box_dummy";
 
     }
-
   if (box == "box_dummy") {
-    console.log("feld voll");
   }
 }
 
@@ -89,40 +80,36 @@ function markFields(turn,i) {
 
 
 function computerChoose() {
-  console.log("insied computerChoose");
+
   var loop = true;
 
   while (loop == true) {
     var computerNumber = Math.floor((Math.random() * 8) + 1)
     computerSelector = coordinates[computerNumber]
-    console.log(computerSelector);
 
     var checkPlayerArray = spielerArray[0].indexOf(computerSelector)
-    console.log(checkPlayerArray);
-
     var checkOwnArray = spielerArray[1].indexOf(computerSelector)
-    console.log(checkOwnArray + "  own array");
+
 
     if (checkPlayerArray > -1 || checkOwnArray > -1) {
-      console.log("again");
+
       loop = true;
     }
 
     if (checkPlayerArray === -1 && checkOwnArray === -1) {
       loop = false;
-      console.log(loop);
+
       var collection = [computerNumber,computerSelector];
       return collection;
     }
-    console.log(loop + " outer loop");
+
   }
 
 }
 
 function computerPush(hander) {
-  console.log(hander + " insider push");
+
   spielerArray[1].push(hander[1])
-  console.log(spielerArray[1]);
   field[hander[0]].childNodes[1].innerHTML = playerMarkB;
 }
 
@@ -148,13 +135,8 @@ function setup() {
       setTimeout(function() {
 
         if (turn == 1 && inputComputer.checked == true) {
-          console.log("my turn");
-          //choose nummber and backcheck if nummber allready choosen
-
           var hander = computerChoose()
-          //push number in array
           computerPush(hander)
-          //check winning conditions
           checkWin(turn)
           draw()
 
@@ -194,8 +176,6 @@ function cleanUp(turn) {
     field[i].childNodes[1].innerHTML = ""
   }
   turn = 0
-  console.log(turn);
-  console.log("ende");
 }
 
 
@@ -269,8 +249,7 @@ function winingArray(eachArray,counter,win,turn) {
     win = true;
 
   }
-
-
+  
   if (win === true) {
     pointCount(turn)
   }

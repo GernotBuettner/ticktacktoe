@@ -1,6 +1,13 @@
 $background: #af925b;
 $field: white;
 $border: #806565;
+$goldish: #DAD1B5;
+
+
+body {
+  background-color: $goldish;
+}
+
 
 .box_wrp {
   display: inline-block;
@@ -17,8 +24,8 @@ $border: #806565;
     display: -webkit-inline-flex;
     justify-content: center;
     background-color: $background;
-    width: 700px;
-    height: 700px;
+    width: 500px;
+    height: 500px;
 
     .gameboard_wrp {
       padding: 34px;
@@ -35,33 +42,27 @@ $border: #806565;
           background-color: black;
           margin: 2px;
           display: inline-block;
-          width: 200px;
-          height: 200px;
+          width: 140px;
+          height: 140px;
         }
 
         .box_dummy {
           background-color: black;
           margin: 2px;
           display: inline-block;
-          width: 200px;
-          height: 200px;
+          width: 140px;
+          height: 140px;
         }
 
-        .box_dummy_alt {
-          background-color: red;
-          margin: 2px;
-          display: inline-block;
-          width: 200px;
-          height: 200px;
-        }
+
 
         p {
           font-size: 100px;
           text-align: center;
           color: antiquewhite;
-          width: 200px;
-          height: 200px;
-          padding: 38px 0;
+          width: 140px;
+          height: 140px;
+          padding: 8px 0;
           margin: 0;
         }
 

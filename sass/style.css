@@ -1,3 +1,6 @@
+body {
+  background-color: #DAD1B5; }
+
 .box_wrp {
   display: inline-block;
   text-align: center; }
@@ -10,8 +13,8 @@
     display: -webkit-inline-flex;
     justify-content: center;
     background-color: #af925b;
-    width: 700px;
-    height: 700px; }
+    width: 500px;
+    height: 500px; }
     .box_wrp .gameboard .gameboard_wrp {
       padding: 34px;
       display: inline-block; }
@@ -24,27 +27,21 @@
           background-color: black;
           margin: 2px;
           display: inline-block;
-          width: 200px;
-          height: 200px; }
+          width: 140px;
+          height: 140px; }
         .box_wrp .gameboard .gameboard_wrp .row .box_dummy {
           background-color: black;
           margin: 2px;
           display: inline-block;
-          width: 200px;
-          height: 200px; }
-        .box_wrp .gameboard .gameboard_wrp .row .box_dummy_alt {
-          background-color: red;
-          margin: 2px;
-          display: inline-block;
-          width: 200px;
-          height: 200px; }
+          width: 140px;
+          height: 140px; }
         .box_wrp .gameboard .gameboard_wrp .row p {
           font-size: 100px;
           text-align: center;
           color: antiquewhite;
-          width: 200px;
-          height: 200px;
-          padding: 38px 0;
+          width: 140px;
+          height: 140px;
+          padding: 8px 0;
           margin: 0; }
   .box_wrp .player_row {
     width: 100vw;
